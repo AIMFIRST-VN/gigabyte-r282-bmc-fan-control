@@ -42,8 +42,30 @@ demands:
   power reveals a second / third card
 - a hard **91 °C** all-fan safety, and a near-silent idle.
 
+## Install
+
+Full step-by-step guide: **[`docs/INSTALL.md`](docs/INSTALL.md)**. The short
+version (Python 3.8+, `requests`):
+
+```bash
+pip install requests
+export BMC_HOST=bmc.example.lan BMC_USER=admin BMC_PASS='your-password'
+
+python3 scripts/apply-fan-profile.py backup  stock-profile.json   # back up first
+python3 scripts/apply-fan-profile.py apply   my-fan-profile.json  # write (read-back verified)
+python3 scripts/apply-fan-profile.py mode    fankit-v3            # activate
+python3 scripts/apply-fan-profile.py restore stock-profile.json   # revert anytime
+```
+
+Start from a layered example in [`results/`](results) and adapt the sensor/fan
+indices to your board using [`docs/fan-profile.md`](docs/fan-profile.md). Back up
+first, test on an idle GPU — you're reprogramming the BMC's fan control.
+
 ## What's here
 
+- **[`docs/INSTALL.md`](docs/INSTALL.md)** — installation & usage guide.
+- **`scripts/apply-fan-profile.py`** — apply/activate/back-up a fan profile over
+  the BMC's `/api/` interface (login → CSRF → `POST`, every write verified).
 - **`docs/fan-profile.md`** — the reverse-engineered sensor reference, working fan
   curves, and validated thermals.
 - **`docs/blog.md`** — the write-up.
