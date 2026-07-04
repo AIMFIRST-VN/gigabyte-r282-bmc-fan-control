@@ -16,6 +16,12 @@ fix **Gigabyte MZ92-FS0 fan control** for good — near-silent at idle, ramping 
 proportion to what the GPU is actually doing, and safe even if every piece of
 host software dies. Everything here is open source.
 
+<blockquote style="border-left:4px solid #2563eb;padding:12px 16px;margin:1.3em 0;background:transparent;font-style:normal">
+<strong style="font-size:1.14em">Just want the code? It's open source.</strong><br>
+Fan profiles, the apply-and-verify tool, the sensor reference, and the burn-in + 12 h soak tooling:<br>
+<a href="https://github.com/AIMFIRST-VN/gigabyte-r282-bmc-fan-control"><strong>github.com/AIMFIRST-VN/gigabyte-r282-bmc-fan-control</strong></a>
+</blockquote>
+
 ## The BMC doesn't understand your GPU
 
 A passive AMD **Radeon Pro V620** has no onboard fan — it needs chassis air, and
